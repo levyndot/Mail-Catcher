@@ -34,11 +34,11 @@ Ensuite en utilisant les mails filtrés, il faut pour chaques mails :
 ```json
 [
     {
-        "id" : <numéro>
-        "subject" : <sujet du mail>
+        "id" : "<numéro>"
+        "subject" : "<sujet du mail>"
     },{
-        "id" : <numéro>
-        "subject" : <sujet du mail>
+        "id" : "<numéro>"
+        "subject" : "<sujet du mail>"
     },{
         ...
     }
@@ -65,7 +65,7 @@ mail.output.path | String  | Le nom du répertoire où seront enregistrés les m
 
 #### Connfiguration mail
 Property | Valeur | Description
------------- | -------------
+------------ | ------------- | -------------
 mail.store.protocol | imap/pop3/ews | Protocole à utiliser pour la récupération des mails. Par défaut, l'application choisi IMAP
 mail.host | URL | L'URL du serveur de mail.
 mail.user | String | Le nom d'utilisateur pour se connecter au serveur mail.
