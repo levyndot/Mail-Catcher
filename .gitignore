@@ -1,0 +1,10 @@
+# Fichiers intelliJ
+.idea/
+*.iml
+
+# Fichiers log
+*.log
+
+# Compilation
+target/
+
