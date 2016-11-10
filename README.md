@@ -4,32 +4,27 @@
 
 Fournir un projet compilable et exécutable, capable de capturer des mails depuis diverses sources et les sauvegarder dans un répertoire local.
 
-## Sépcifications requises
+## Sépcifications
 
-* Utilisation de Java 8
-* Utilisation de MAVEN comme format du projet
-* Utilisation de l’API standard Java Mail
-* Les protocoles supportés seront POP3 / IMAP /Microsoft EWS
-* Chaques paramètres devra être présent dans un fichier unique application.properties
+* Java 8
+* MAVEN 3.3.3
+* API standard Java Mail
+* Protocoles supportés : POP3 / IMAP /Microsoft EWS
 
+Mail-Catcher liste les mails contenus dans une boite mail avec un ou plusieurs filtre suivant :
 
-Le programme devra lister les mail contenus dans la boite avec un ou plusieurs filtre suivant :
+* email de l’émetteur du mail (requis au minimum)
+* présence de pièces jointes
+* mot présent dans le sujet du mail
 
-* Filtre sur l’email de l’émetteur du mail ( filtre requis au minimum )
-* Filtre sur la présence de pièces jointes
-* Filtre sur un mot présent dans le sujet du mail
+Puis pour chaques mails :
 
-
-
-Ensuite en utilisant les mails filtrés, il faut pour chaques mails :
-
-* Créer un répertoire avec l’email émetteur
-* Générer un numéro incrémental pour chaques mails
-* Avec ce numéro sauvegarder dans le répertoire de l’émetteur :
+* Création d'un répertoire avec l’email émetteur
+* Génération d'un numéro incrémental pour chaques mails et avec ce numéro, sauvegarde dans le répertoire de l’émetteur :
     * Le mail au format EML ( `<numéro>.eml` )
     * Le sujet du mail et le corps dans un fichier TXT ( `<numéro>.txt`)
-    * Pièce jointe si présente (`<numéro>_<nom pièce  jointe>.<extension pièce jointe>`)
-    * Générer un fichier JSON de résumé dans ce même répertoire au format :
+    * Pièce(s) jointe(s) si présente(nt) (`<numéro>_<nom pièce  jointe>.<extension pièce jointe>`)
+    * Génération d'un fichier JSON de résumé dans le répertoire de l’émetteur au format :
 
 ```json
 [
@@ -49,12 +44,7 @@ Ensuite en utilisant les mails filtrés, il faut pour chaques mails :
 
 ## Comment l'utiliser
 
-L'application à été conçu afin de pouvoir choisir son protocole de communication avec le serveur mail. Trois choix sont possibles : 
-* IMAP
-* POP3
-* Microsoft Exchange EWS
-
-Pour choisir, il suffit de modifier le fichier de paramétrage se trouvant dans "src/main/java/resources/application.properties".
+Il faut avant tout paramétrer l'application afin qu'il puisse se connecter correctement au serveur avec les bons crédentials et et le protocole souhaité. Ce paramétrage s'effectue dans le fichier "src/main/java/resources/application.properties".
 
 ### Détails du paramétrage
 #### Configuration générale
@@ -87,12 +77,12 @@ mail.filter.has.pj | true/false | (Optionnel) Avec une pièce jointe ou non.
 mail.filter.subject | String | (Optionnel) Terme ou phrase à rechercher dans l'objet des mails.
 
 ### Execution
-Un fois que la configuration souhaitée a été mise en place, lancer une compilation Maven :
+Un fois que Mail-Catcher est correctement paramétré, lancer une compilation :
 ```
 mvn clean package
 ```
 
-La compilation génère un jar executable et portable dans le dossier target du projet. Il ne reste plus qu'à lancer mail-catcher :
+Ce qui donnera naissance à un jar executable et portable dans le dossier `target` du projet. Il ne reste plus qu'à lancer Mail-Catcher :
 ```
 java -jar mail-catcher-1.0-SNAPSHOT.jar
 ```
