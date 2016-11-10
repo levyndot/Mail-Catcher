@@ -1,17 +1,17 @@
-# Mail-Catcher
+# Mail Catcher
 
 ## Objectif
 
-Fournir un projet compilable et exécutable, capable de capturer des mails depuis diverses sources et les sauvegarder dans un répertoire local.
+Réalisation d'un application Java capable de capturer des mails depuis diverses sources et les sauvegarder dans un répertoire local.
 
-## Sépcifications
+## Sépicifications
 
 * Java 8
 * MAVEN 3.3.3
 * API standard Java Mail
 * Protocoles supportés : POP3 / IMAP /Microsoft EWS
 
-Mail-Catcher liste les mails contenus dans une boite mail avec un ou plusieurs filtre suivant :
+Mail Catcher récupère les mails contenus dans une boite mail avec un ou plusieurs filtre suivant :
 
 * email de l’émetteur du mail (requis au minimum)
 * présence de pièces jointes
@@ -82,7 +82,7 @@ Un fois que Mail-Catcher est correctement paramétré, lancer une compilation :
 mvn clean package
 ```
 
-Ce qui donnera naissance à un jar executable et portable dans le dossier `target` du projet. Il ne reste plus qu'à lancer Mail-Catcher :
+Ce qui donnera naissance à un jar executable et portable dans le dossier `target` du projet. Il ne reste plus qu'à lancer Mail Catcher :
 ```
 java -jar mail-catcher-1.0-SNAPSHOT.jar
 ```
