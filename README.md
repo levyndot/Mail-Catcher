@@ -54,16 +54,20 @@ L'application à été conçu afin de pouvoir choisir son protocole de communica
 * POP3
 * Microsoft Exchange EWS
 
-Pour faire ce choix il suffit de modifier le fichier de paramétrage se trouvant dans "src/main/java/resources/application.properties".
+Pour choisir, il suffit de modifier le fichier de paramétrage se trouvant dans "src/main/java/resources/application.properties".
 
 ### Détails du paramétrage
 #### Configuration générale
+Configuration générique, transverse a toute l'application.
+
 Property | Valeur | Description
 ------------ | ------------- | -------------
 mail.debug.enable | true/false | (Optionnel) Pour activer le mode DEBUG. Désactivé par défaut.
 mail.output.path | String  | Le nom du répertoire où seront enregistrés les mails.
 
 #### Connfiguration mail
+Configuration liée au protocole de communication, et connection au serveur mail.
+
 Property | Valeur | Description
 ------------ | ------------- | -------------
 mail.store.protocol | imap/pop3/ews | Protocole à utiliser pour la récupération des mails. Par défaut, l'application choisi IMAP
@@ -74,6 +78,8 @@ mail.ews.email | Email | Pour le protocole Exchange EWS, l'email de l'utilisateu
 mail.password | String | Le mot de passe de connexion au serveur mail pour l'utilisateur.
 
 #### Configuration des filtres
+Paramétrage des filtres applicable aux mails récupérés.
+
 Property | Valeur | Description
 ------------ | ------------- | -------------
 mail.filter.from | Email | L'email de l'expéditeur.
@@ -81,12 +87,12 @@ mail.filter.has.pj | true/false | (Optionnel) Avec une pièce jointe ou non.
 mail.filter.subject | String | (Optionnel) Terme ou phrase à rechercher dans l'objet des mails.
 
 ### Execution
-Un fois la configuration souhaité a été mise en place, lancer une compilation Maven :
+Un fois que la configuration souhaitée a été mise en place, lancer une compilation Maven :
 ```
 mvn clean package
 ```
 
-La compilation génère un jar executable et portable. Il se trouvera dans le dossier target du projet. Il ne reste plus qu'à lancer mail-catcher :
+La compilation génère un jar executable et portable dans le dossier target du projet. Il ne reste plus qu'à lancer mail-catcher :
 ```
 java -jar mail-catcher-1.0-SNAPSHOT.jar
 ```
