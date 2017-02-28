@@ -2,7 +2,7 @@
 
 ## Objectif
 
-Réalisation d'un application Java capable de capturer des mails depuis diverses sources et les sauvegarder dans un répertoire local.
+Une application Java capable de capturer des mails depuis diverses sources et les sauvegarder dans un répertoire local.
 
 ## Sépicifications
 
@@ -13,7 +13,7 @@ Réalisation d'un application Java capable de capturer des mails depuis diverses
 
 Mail Catcher récupère les mails contenus dans une boite mail avec un ou plusieurs filtre suivant :
 
-* email de l’émetteur du mail (requis au minimum)
+* email de l’émetteur du mail (requis)
 * présence de pièces jointes
 * mot présent dans le sujet du mail
 
@@ -34,9 +34,8 @@ Puis pour chaques mails :
     },{
         "id" : "<numéro>"
         "subject" : "<sujet du mail>"
-    },{
-        ...
-    }
+    },
+    ...
 ]
 ```
 
@@ -44,7 +43,7 @@ Puis pour chaques mails :
 
 ## Comment l'utiliser
 
-Il faut avant tout paramétrer l'application afin qu'il puisse se connecter correctement au serveur avec les bons crédentials et et le protocole souhaité. Ce paramétrage s'effectue dans le fichier "src/main/java/resources/application.properties".
+Il faut avant tout paramétrer l'application afin qu'elle puisse se connecter au serveur avec les bons crédentials et le protocole souhaité. Ces informations doivent être renseigné dans le fichier "src/main/java/resources/application.properties".
 
 ### Détails du paramétrage
 #### Configuration générale
@@ -52,27 +51,27 @@ Configuration générique, transverse a toute l'application.
 
 Property | Valeur | Description
 ------------ | ------------- | -------------
-mail.debug.enable | true/false | (Optionnel) Pour activer le mode DEBUG. Désactivé par défaut.
+mail.debug.enable | true/false | (Optionnel) Pour activer le mode DEBUG. Par défaut : false.
 mail.output.path | String  | Le nom du répertoire où seront enregistrés les mails.
 
 #### Connfiguration mail
-Configuration liée au protocole de communication, et connection au serveur mail.
+Configuration du protocole de communication, et connection au serveur mail.
 
 Property | Valeur | Description
 ------------ | ------------- | -------------
-mail.store.protocol | imap/pop3/ews | Protocole à utiliser pour la récupération des mails. Par défaut, l'application choisi IMAP
-mail.host | URL | L'URL du serveur de mail.
-mail.user | String | Le nom d'utilisateur pour se connecter au serveur mail.
+mail.store.protocol | imap/pop3/ews | Protocole à utiliser. Par défaut : IMAP.
+mail.host | URL | L'URL du serveur mail.
+mail.user | String | Le nom d'utilisateur du compte mail.
 mail.ews.domain | String | Pour le protocole Exchange EWS, le nom du domaine de l'utilisateur.
 mail.ews.email | Email | Pour le protocole Exchange EWS, l'email de l'utilisateur.
-mail.password | String | Le mot de passe de connexion au serveur mail pour l'utilisateur.
+mail.password | String | Le mot de passe de l'utilisateur.
 
 #### Configuration des filtres
-Paramétrage des filtres applicable aux mails récupérés.
+Filtres applicables.
 
 Property | Valeur | Description
 ------------ | ------------- | -------------
-mail.filter.from | Email | L'email de l'expéditeur.
+mail.filter.from | String (xxx@xxx.xxx) | L'email de l'expéditeur.
 mail.filter.has.pj | true/false | (Optionnel) Avec une pièce jointe ou non.
 mail.filter.subject | String | (Optionnel) Terme ou phrase à rechercher dans l'objet des mails.
 
